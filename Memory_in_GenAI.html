@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Understanding Memory in Generative AI</title>
+
+  <!-- Markmap Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.3/dist/browser/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.3/dist/browser/index.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #f5f7fa;
+      font-family: Arial, sans-serif;
+    }
+    #mindmap {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+
+<svg id="mindmap"></svg>
+
+<script>
+const { Markmap, loadCSS, loadJS } = window.markmap;
+
+const markdown = `
+# Understanding Memory in Generative AI Applications
+
+## Importance of Memory
+- Essential for GenAI systems
+- Enables conversation continuity
+- Framework-agnostic concept
+
+## Mathematical Model of LLM Inference
+- LLM = f(x; θ)
+- Output depends on parameters + input
+- Stateless during inference
+
+## Statelessness & Memory Challenges
+- No intrinsic memory
+- Must implement memory externally
+- Critical for chatbots & agents
+
+## Context Window & In-Context Learning
+- Limited token window
+- Uses conversation inside prompt
+- Simulates memory within limits
+
+## Short-Term Memory Implementation
+- Stored as conversation buffer
+- Appended to prompt each turn
+- Lost after session reset
+
+## Limitations of Short-Term Memory
+- Token limits
+- No cross-session memory
+- No long-term personalization
+
+## Solutions for Memory Challenges
+- Databases for persistence
+- Vector stores
+- Retrieval mechanisms
+
+## Long-Term Memory: Requirements & Types
+- Episodic Memory
+- Semantic Memory
+- Procedural Memory
+
+## Workflow of Long-Term Memory Systems
+- Creation
+- Storage
+- Retrieval
+- Injection into prompt
+
+## Engineering Challenges & Emerging Solutions
+- Real-time orchestration
+- Memory indexing
+- Agentic architectures
+`;
+
+const { Transformer } = window.markmap;
+const transformer = new Transformer();
+const { root } = transformer.transform(markdown);
+
+Markmap.create('#mindmap', {}, root);
+</script>
+
+</body>
+</html>
